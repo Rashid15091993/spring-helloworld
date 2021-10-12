@@ -1,5 +1,6 @@
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import pojo.Cat;
 
 public class App {
     public static void main(String[] args) {
@@ -7,6 +8,16 @@ public class App {
                 new AnnotationConfigApplicationContext(AppConfig.class);
         HelloWorld bean =
                 (HelloWorld) applicationContext.getBean("helloworld");
+        HelloWorld bean2 =
+                (HelloWorld) applicationContext.getBean("helloworld");
+        System.out.println(bean == bean2);
+        System.out.println(bean);
+        System.out.println(bean2);
+
+        Cat beanCat = (Cat) applicationContext.getBean("cat");
         System.out.println(bean.getMessage());
+        Cat bean2Cat = (Cat) applicationContext.getBean("cat");
+        System.out.println(beanCat.getMessage());
+        System.out.println(beanCat == bean2Cat);
     }
 }
